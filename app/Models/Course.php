@@ -9,6 +9,9 @@ class Course extends Model
 {
     use HasFactory;
 
+    protected $guarded =['id','status'];
+
+
     const BORRADOR=1;
     const REVISION=2;
     const PUBLICADO=3;
@@ -61,6 +64,16 @@ class Course extends Model
     public function sections()
     {
         return $this->hasMany(Section::class);
+    }
+
+    public function image()
+    {
+        return $this->morphOne(Image::class,'imageable');
+    }
+
+    public function lessons()
+    {
+        return $this->hasManyThrough(Lesson::class,Section::class);
     }
 
 }

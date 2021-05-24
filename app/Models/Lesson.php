@@ -9,6 +9,9 @@ class Lesson extends Model
 {
     use HasFactory;
 
+    protected $guarded =['id'];
+
+
     public function section()
     {
         return $this->belongsTo(Section::class);
@@ -27,5 +30,21 @@ class Lesson extends Model
     public function users()
     {
         return $this->belongsToMany(User::class);
+    }
+
+
+    public function resource()
+    {
+        return $this->morphOne(Resource::class,'resourceable');
+    }
+
+    public function comments()
+    {
+        return $this->morphToMany(Comment::class,'commentable');
+    }
+
+    public function reactions()
+    {
+        return $this->morphToMany(Reactions::class,'reactionable');
     }
 }

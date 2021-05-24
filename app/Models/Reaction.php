@@ -11,4 +11,17 @@ class Reaction extends Model
     const LIKE=1;
     const DISLIKE=2;
 
+    protected $guarded =['id'];
+
+
+    public function reactionable()
+    {
+        return $this->morphTo();
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }
