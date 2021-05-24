@@ -60,4 +60,31 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
+
+
+    public function courses_dictated()
+    {
+        return $this->hasMany(Course::class);
+    }
+
+    public function courses_enrolled()
+    {
+        return $this->BelongsToMany(Course::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function lessons()
+    {
+        return $this->belongsToMany(Lesson::class);
+    }
 }
