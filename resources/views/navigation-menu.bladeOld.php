@@ -75,6 +75,7 @@
 
                 <!-- Settings Dropdown -->
                 <div class="ml-3 relative">
+                    @auth
                     <x-jet-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
@@ -124,6 +125,7 @@
                             </form>
                         </x-slot>
                     </x-jet-dropdown>
+                   @endAuth
                 </div>
             </div>
 
@@ -148,7 +150,9 @@
         </div>
 
         <!-- Responsive Settings Options -->
+          @auth
         <div class="pt-4 pb-1 border-t border-gray-200">
+
             <div class="flex items-center px-4">
                 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                     <div class="flex-shrink-0 mr-3">
@@ -216,6 +220,6 @@
                     @endforeach
                 @endif
             </div>
-        </div>
-    </div>
+
+        </div>     </div>
 </nav>

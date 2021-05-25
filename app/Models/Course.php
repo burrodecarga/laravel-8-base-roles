@@ -11,10 +11,22 @@ class Course extends Model
 
     protected $guarded =['id','status'];
 
+    protected $withCount =['students','reviews'];
+
 
     const BORRADOR=1;
     const REVISION=2;
     const PUBLICADO=3;
+
+
+    public function getRatingAttribute()
+    {
+
+           return $this->reviews->avg('rating');
+    
+
+     }
+
 
     public function teacher()
     {
@@ -23,7 +35,7 @@ class Course extends Model
 
     public function students()
     {
-        return $this->belongsToMany(User::class,'user_id');
+        return $this->belongsToMany(User::class);
     }
 
     public function reviews()

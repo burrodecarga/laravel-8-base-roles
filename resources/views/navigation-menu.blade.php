@@ -1,5 +1,5 @@
 @php($navLink = [
-    ['href'=>'/dashboard', 'name'=>'dashboard', 'text'=>'Dashboard'  ],
+    ['href'=>'/', 'name'=>'dashboard', 'text'=>'Home'  ],
     ['href'=>'/users', 'name'=>'users', 'text'=>'Users'  ],
     ['href'=>'/posts', 'name'=>'posts', 'text'=>'posts'  ],
     ['href'=>'/jobs', 'name'=>'jobs', 'text'=>'jobs'  ],
@@ -18,7 +18,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('home') }}">
                         <x-application-mark class="block h-9 w-auto" />
                     </a>
                 </div>
@@ -86,7 +86,8 @@
 
                 <!-- Settings Dropdown -->
                 <div class="ml-3 relative">
-                    <x-jet-dropdown align="right" width="48">
+                    @auth
+                        <x-jet-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                                 <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
@@ -135,6 +136,15 @@
                             </form>
                         </x-slot>
                     </x-jet-dropdown>
+                    @else
+                    <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                        @endif
+
+                    @endauth
+
                 </div>
             </div>
 
@@ -158,11 +168,11 @@
                 {{ __($link['text']) }}
             </x-responsive-nav-link>
             @endforeach
-
         </div>
 
         <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200">
+        @auth
+             <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="flex items-center px-4">
                 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                     <div class="flex-shrink-0 mr-3">
@@ -231,5 +241,14 @@
                 @endif
             </div>
         </div>
+        @else
+
+        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                        @endif
+        @endauth
+
     </div>
 </nav>
