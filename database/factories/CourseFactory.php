@@ -28,13 +28,13 @@ class CourseFactory extends Factory
     {
         $title = $this->faker->sentence(6);
         return [
-            'name' =>$title,
+            'title' =>$title,
             'subtitle'=>$this->faker->sentence(),
             'description' =>$this->faker->paragraph(),
             'status' =>$this->faker->randomElement([Course::BORRADOR,Course::REVISION,Course::PUBLICADO]),
             'slug'=>Str::slug($title),
             'user_id'=>User::all()->random()->id,
-            'leve_id'=>Level::all()->random()->id,
+            'level_id'=>Level::all()->random()->id,
             'category_id'=>Category::all()->random()->id,
             'price_id'=>Price::all()->random()->id,
         ];

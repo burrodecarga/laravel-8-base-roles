@@ -13,7 +13,7 @@ class CreateRequerimentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('requeriments', function (Blueprint $table) {
+        Schema::create('requirements', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->unsignedBigInteger('course_id');
@@ -29,6 +29,6 @@ class CreateRequerimentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('requeriments');
+        Schema::dropIfExists('requirements');
     }
 }

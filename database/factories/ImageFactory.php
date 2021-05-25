@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Image;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Storage;
 
 class ImageFactory extends Factory
 {
@@ -22,7 +23,7 @@ class ImageFactory extends Factory
     public function definition()
     {
         return [
-          'url'=>$this->faker->image('public/storage/cursos')
-        ];
+          'url'=>'cursos/'.$this->faker->image('public/storage/cursos',640,480,null,false),
+              ];
     }
 }
