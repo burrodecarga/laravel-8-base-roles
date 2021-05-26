@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
+use App\Models\Requirement;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -11,8 +13,9 @@ class CourseController extends Controller
         return view('courses.index');
     }
 
-    public function show()
+    public function show(Course $course)
     {
-        return view('courses.show');
+        //dd($course->requirements);
+        return view('courses.show',compact('course'));
     }
 }

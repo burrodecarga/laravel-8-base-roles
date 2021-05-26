@@ -12,7 +12,7 @@ class Level extends Model
     protected $guarded =['id'];
 
 
-    public function course()
+    public function courses()
     {
         return $this->hasMany(Course::class);
     }

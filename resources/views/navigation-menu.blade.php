@@ -1,12 +1,7 @@
 @php($navLink = [
-    ['href'=>'/', 'name'=>'dashboard', 'text'=>'Home'  ],
-    ['href'=>'/courses', 'name'=>'courses.index', 'text'=>'Courses'  ],
-    ['href'=>'/posts', 'name'=>'posts', 'text'=>'posts'  ],
-    ['href'=>'/jobs', 'name'=>'jobs', 'text'=>'jobs'  ],
-    ['href'=>'/roles', 'name'=>'roles.index', 'text'=>'roles'  ],
-    ['href'=>'/legal', 'name'=>'legal.index', 'text'=>'legal'  ],
-    ['href'=>'/skills', 'name'=>'skills.index', 'text'=>'skills'  ],
-    ['href'=>'/focal-points', 'name'=>'focal-points.index', 'text'=>'focal-points']
+    ['href'=>'/', 'name'=>'dashboard', 'text'=>'Home','alias'=>'dasboard' ],
+    ['href'=>'/courses', 'name'=>'courses.index', 'text'=>'Courses','alias'=>'courses.*' ],
+
 
 ])
 
@@ -26,7 +21,7 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     @foreach ($navLink as $link)
-                       <x-nav-link :href="$link['href']" :active="request()->routeIs($link['name'])">
+                       <x-nav-link :href="$link['href']" :active="request()->routeIs($link['alias'])">
                         {{ __($link['text']) }}
                       </x-nav-link>
                     @endforeach
@@ -164,7 +159,7 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             @foreach ($navLink as $link )
-                <x-responsive-nav-link href="$link['href']" :active="request()->routeIs($link['name'])">
+                <x-responsive-nav-link href="$link['href']" :active="request()->routeIs($link['alias'])">
                 {{ __($link['text']) }}
             </x-responsive-nav-link>
             @endforeach
@@ -188,12 +183,12 @@
 
             <div class="mt-3 space-y-1">
                 <!-- Account Management -->
-                <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
+                <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.*')">
                     {{ __('Profile') }}
                 </x-jet-responsive-nav-link>
 
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
-                    <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
+                    <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.*')">
                         {{ __('API Tokens') }}
                     </x-jet-responsive-nav-link>
                 @endif
@@ -218,12 +213,12 @@
                     </div>
 
                     <!-- Team Settings -->
-                    <x-jet-responsive-nav-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}" :active="request()->routeIs('teams.show')">
+                    <x-jet-responsive-nav-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}" :active="request()->routeIs('teams.*')">
                         {{ __('Team Settings') }}
                     </x-jet-responsive-nav-link>
 
                     @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
-                        <x-jet-responsive-nav-link href="{{ route('teams.create') }}" :active="request()->routeIs('teams.create')">
+                        <x-jet-responsive-nav-link href="{{ route('teams.create') }}" :active="request()->routeIs('teams.*')">
                             {{ __('Create New Team') }}
                         </x-jet-responsive-nav-link>
                     @endcan

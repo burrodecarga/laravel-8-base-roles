@@ -43,12 +43,12 @@ class Course extends Model
 
     public function category()
     {
-        return $this->hasOne(Category::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function level()
     {
-        return $this->hasOne(Leave::class);
+        return $this->belongsTo(Level::class);
     }
 
     public function price()
@@ -58,7 +58,7 @@ class Course extends Model
 
     public function requirements()
     {
-        return $this->hasMany(Requirements::class);
+        return $this->hasMany(Requirement::class);
     }
 
     public function goals()

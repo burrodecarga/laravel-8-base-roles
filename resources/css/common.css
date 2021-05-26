@@ -1,5 +1,5 @@
 .container{
-    @apply max-w-7xl mx-auto py-24
+    @apply max-w-7xl mx-auto py-24 bg-white
 }
 
 @media(min-width:640){
@@ -12,5 +12,17 @@
     .container{
        @apply px-8;
     }
+}
+
+.card{
+@apply bg-white shadow-sm rounded-lg overflow-hidden
+}
+
+.card-body{
+    @apply px-6 py-4
+}
+
+.card-title{
+    @apply text-center text-gray-700 text-lg mb-2 leading-6
 }
 
