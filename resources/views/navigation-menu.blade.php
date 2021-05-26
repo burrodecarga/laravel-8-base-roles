@@ -1,6 +1,6 @@
 @php($navLink = [
     ['href'=>'/', 'name'=>'dashboard', 'text'=>'Home'  ],
-    ['href'=>'/users', 'name'=>'users', 'text'=>'Users'  ],
+    ['href'=>'/courses', 'name'=>'courses.index', 'text'=>'Courses'  ],
     ['href'=>'/posts', 'name'=>'posts', 'text'=>'posts'  ],
     ['href'=>'/jobs', 'name'=>'jobs', 'text'=>'jobs'  ],
     ['href'=>'/roles', 'name'=>'roles.index', 'text'=>'roles'  ],
