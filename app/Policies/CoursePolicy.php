@@ -25,4 +25,12 @@ class CoursePolicy
 
         return $course->students->contain($user->id);
     }
+
+    public function published(?User $user,Course $course){
+        if($course->status==3){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
