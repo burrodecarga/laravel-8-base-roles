@@ -1,7 +1,6 @@
 <div>
     <div class="py-4 bg-gray-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 flex">
-
             <button
                 class="focus:outline-none bg-white shadow h-12 px-4 text-center rounded-lg text-gray-600 items-center"
                 wire:click="iniciar">
@@ -12,7 +11,7 @@
                 <button class="bg-white shadow h-12 px-6 ml-4 text-center rounded-lg text-gray-600">
                     <i class="fas fa-tags text-sm ml-2"></i>
                     Category<i class="fas fa-angle-down text-sm ml-2"></i>
-                </button>
+            </button>
 
                 <div class="absolute right-0 w-40 mt-2 py-2 bg-white border rounded shadow-xl" x-show="open">
                     @foreach ($categories as $category )
@@ -36,7 +35,6 @@
                     @endforeach
                 </div>
             </div>
-
         </div>
 
     </div>

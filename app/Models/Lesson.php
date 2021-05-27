@@ -12,6 +12,11 @@ class Lesson extends Model
     protected $guarded =['id'];
 
 
+public function getCompletedAttribute()
+{
+   return $this->users->contains(auth()->user()->id);
+}
+
     public function section()
     {
         return $this->belongsTo(Section::class);
