@@ -22,6 +22,8 @@ class UserSeeder extends Seeder
         $candidate = Role::create(['name' =>'candidate']);
         $employer = Role::create(['name' =>'employer']);
         $guest = Role::create(['name' =>'guest']);
+        $course = Role::create(['name' =>'course']);
+
 
         $permissions = ['show','create','edit','update','delete'];
 

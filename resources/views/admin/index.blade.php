@@ -2,11 +2,12 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Rokave</h1>
+    <h1>Rokave Dashboard</h1>
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
+    <p>Welcome to the role Dashboard</p>
+
 @stop
 
 @section('css')
