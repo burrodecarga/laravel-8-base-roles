@@ -2,12 +2,12 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Rokave Dashboard</h1>
+    <h1>Rokave Users Dashboard</h1>
 @stop
 
 @section('content')
-    <p>Welcome Admin Dashboard</p>
-  
+
+@livewire('admin-users')
 
 @stop
 

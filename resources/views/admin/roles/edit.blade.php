@@ -6,7 +6,20 @@
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-md-12 mx-auto">
+                    <h4 class="text-uppercase"><strong>{{__($title)}}</strong></h4>
+                    <form class="shadow-sm rounded py-3 px-3 form-create" action="{{route('admin.roles.update',$role->id)}} " method="POST">
+                        @method('PUT')
+                     @include('admin.roles.partials.form')
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @stop
 
 @section('css')

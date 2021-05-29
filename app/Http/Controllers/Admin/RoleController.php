@@ -27,8 +27,12 @@ class RoleController extends Controller
      */
     public function create()
     {
-        $permissions = Permission::all();
-        return view('admin.roles.create',compact('permissions')); //
+        $role = new Role;
+        $permissions = Permission::orderBy('permission', 'asc')->get();
+        $permission_id = [];
+        $title = "new role";
+        $btn = "save";
+        return view('admin.roles.create', compact('role', 'permissions', 'permission_id', 'title', 'btn'));
 
     }
 
@@ -40,11 +44,20 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-       $request->validate([
-           'name'=>'required',
-           'permission'=>'required',
+        $request->validate([
+           'name'=>'required|unique:roles,name',
+           'permissions'=>'required',
        ]);
-        return $request->all();//
+       $role = Role::create([
+           'name'=>$request->name,
+           'area'=>$request->area,
+       ]);
+       foreach ($request->permissions as $key => $p) {
+        $role->givePermissionTo($p);
+    }
+    return redirect()->route('admin.roles.index')->with('info', 'Role ' . $role->name . ' creado exitosamente');
+
+
     }
 
     /**
@@ -55,7 +68,12 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
-        return view('admin.roles.show',compact('role')); //
+        $title = "show role";
+        $btn = "back";
+        $permission_id = $role->permissions->pluck('id')->toArray();
+        $permissions = Permission::orderBy('permission', 'asc')->get();
+
+        return view('admin.roles.show',compact('role','title','btn','permissions','permission_id')); //
 
     }
 
@@ -67,7 +85,11 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        //
+        $permission_id = $role->permissions->pluck('id')->toArray();
+        $permissions = Permission::orderBy('permission', 'asc')->get();
+        $btn = "modify";
+        $title = "modify role: ".$role->name ;
+        return view('admin.roles.edit', compact('role', 'permission_id', 'permissions', 'title', 'btn'));
     }
 
     /**
@@ -79,8 +101,19 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
-        //
+        $role->update([
+            "name" => $request->name,
+            "area" => $request->area,
+        ]);
+        $permissions = $request->permissions;
+        $role->syncPermissions([]);
+        //dd($role->permissions);
+        foreach ($permissions as $key => $p) {
+            $role->givePermissionTo($p);
+        }
+        return redirect()->route('admin.roles.index')->with('info', 'Role ' . $role->name . ' actualizado exitosamente');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -90,6 +123,9 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        //
+        if($role->id==6){        return redirect()->route('admin.roles.index')->with('info','This role is no destroyed');
+        }
+        $role->delete();
+        return redirect()->route('admin.roles.index')->with('info','Role destroyed successfully');
     }
 }

@@ -19,10 +19,11 @@ class UserSeeder extends Seeder
     public function run()
     {
         $admin = Role::create(['name' =>'admin']);
-        $candidate = Role::create(['name' =>'candidate']);
-        $employer = Role::create(['name' =>'employer']);
+        $teacher = Role::create(['name' =>'teacher']);
+        $student = Role::create(['name' =>'student']);
         $guest = Role::create(['name' =>'guest']);
-        $course = Role::create(['name' =>'course']);
+
+
 
 
         $permissions = ['show','create','edit','update','delete'];
@@ -33,8 +34,8 @@ class UserSeeder extends Seeder
             }}
 
             $admin->syncPermissions(Permission::all());
-            $employer->syncPermissions(Permission::where('name','like',"%employer%"));
-            $candidate->syncPermissions(Permission::where('name','like',"%candidate%"));
+            $teacher->syncPermissions(Permission::where('name','like',"%teacher%"));
+            $student->syncPermissions(Permission::where('name','like',"%student%"));
             $guest->syncPermissions(Permission::where('name','like',"%guest%"));
 
         //     $candidate =User::create([

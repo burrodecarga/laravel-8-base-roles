@@ -250,11 +250,22 @@ return [
             'text'        => 'Dashboard',
             'route'         => 'admin.home',
             'icon'        => 'fas fa-fw fa-home',
+            'can' =>['show dashboard']
         ],
         [
             'text'        => 'Roles',
             'route'         => 'admin.roles.index',
             'icon'        => 'fas fa-fw fa-users-cog',
+            'active' =>['admin/roles*'],
+            'can' =>['show roles'],
+            'roles' =>['teacher','super-admin']
+        ],
+        [
+            'text'        => 'Users',
+            'route'         => 'admin.users.index',
+            'icon'        => 'fas fa-fw fa-users',
+            'active' =>['admin/users*'],
+            'can' =>['show users']
         ],
         ['header' => 'account_settings'],
         [
@@ -441,5 +452,5 @@ return [
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Other-Configuration
     */
 
-    'livewire' => false,
+    'livewire' => true,
 ];

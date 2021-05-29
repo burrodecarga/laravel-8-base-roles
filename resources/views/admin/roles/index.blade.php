@@ -7,6 +7,11 @@
 
 @section('content')
     <p>Welcome to the role Dashboard</p>
+ @if (session('info'))
+ <div class="alert alert-primary" role="alert">
+    {{session('info')}}
+  </div>
+ @endif
     <div class="card">
         <div class="cad-body">
             <div class="card-header">
@@ -25,11 +30,14 @@
                        <tr>
                            <td>{{$role->id}}</td>
                            <td>{{$role->name}}</td>
-                           <td>
+                           <td width="10px">
+                            <a class="btn btn-secondary" href="{{route('admin.roles.show',$role->id)}}">show   </a>
+                            </td>
+                           <td width="10px">
                             <a class="btn btn-secondary" href="{{route('admin.roles.edit',$role->id)}}">edit   </a>
                             </td>
-                            <td>
-                               <form action="{{route('admin.roles.destroy',$role->id)}}">
+                            <td width="10px">
+                               <form action="{{route('admin.roles.destroy',$role->id)}}" method="POST">
                             @csrf
                             @method('delete')
                              <button type="submit" class="btn btn-danger">delete</button>
@@ -40,13 +48,12 @@
                     <tr>
                         <td colspan="4">No Result</td>
                     </tr>
-
                     @endforelse
-
                 </tbody>
             </table>
-        </div>
     </div>
+
+
 @stop
 
 @section('css')
