@@ -13,7 +13,7 @@ Route::middleware([])->get('/courses/{course}',[CourseController::class,'show'])
 
 Route::middleware(['auth'])->post('/courses/{course}/enrolled',[CourseController::class,'enrolled'])->name('courses.enrolled');
 
-Route::middleware(['auth'])->get('/courses-status({course}', CourseStatus::class)->name('courses.status');
+Route::middleware(['auth'])->get('/courses-status/{course}', CourseStatus::class)->name('courses.status');
 
 
 

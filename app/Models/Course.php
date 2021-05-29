@@ -22,7 +22,7 @@ class Course extends Model
     public function getRatingAttribute()
     {
 
-        return $this->reviews->avg('rating');
+        return round($this->reviews->avg('rating'),2);
     }
 
 

@@ -250,22 +250,21 @@ return [
             'text'        => 'Dashboard',
             'route'         => 'admin.home',
             'icon'        => 'fas fa-fw fa-home',
-            'can' =>['show dashboard']
+            'can' => 'ver dashboard',
         ],
         [
             'text'        => 'Roles',
             'route'         => 'admin.roles.index',
             'icon'        => 'fas fa-fw fa-users-cog',
             'active' =>['admin/roles*'],
-            'can' =>['show roles'],
-            'roles' =>['teacher','super-admin']
+            'can' =>'listar roles',
         ],
         [
             'text'        => 'Users',
             'route'         => 'admin.users.index',
             'icon'        => 'fas fa-fw fa-users',
             'active' =>['admin/users*'],
-            'can' =>['show users']
+            'can' =>'leer usuarios',
         ],
         ['header' => 'account_settings'],
         [

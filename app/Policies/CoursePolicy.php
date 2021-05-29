@@ -22,8 +22,7 @@ class CoursePolicy
 
     public function isEnrolled(User $user,Course $course)
     {
-
-        return $course->students->contain($user->id);
+        if($course->students->contains($user->id)==false) { return true;}else{return false;}
     }
 
     public function published(?User $user,Course $course){

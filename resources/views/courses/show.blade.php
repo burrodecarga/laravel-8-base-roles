@@ -86,16 +86,18 @@
                         </div>
                     </div>
 
+                   <div>Respuesta: {{$course->students->contains(auth()->user()->id)}}</div>
 
-                    <a class="btn-danger" href="{{route('courses.status',$course)}}">Ir a Curso</a>
-
-                          <form action="{{route('courses.enrolled',$course)}}" method="POST">
+                    @can('isEnrolled', $course)
+                        <form action="{{route('courses.enrolled',$course)}}" method="POST">
                             @csrf
                             <button type="submit" class="btn-success w-full">
                                 {{__('Buy Course')}}
                             </button>
                         </form>
-
+                    @else
+                        <a class="btn-danger mt-4" href="{{route('courses.status',$course)}}">Ir a Curso</a>
+                    @endcan
 
                 </div>
             </section>

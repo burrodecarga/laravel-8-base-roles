@@ -4,7 +4,7 @@
         <input type="text" class="form-control w-100" placeholder="Search Name" wire:model='search' wire:keydown="$set('page',1)">
     </div>
     <div class="card-body">
-        @if ($users->count())
+
 <table class="table table-striped">
             <thead>
                 <tr>

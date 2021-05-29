@@ -30,6 +30,10 @@ class DatabaseSeeder extends Seeder
         $this->call(PlatFormSeeder::class);
          $this->call(CourseSeeder::class);
          $this->call(ReviewSeeder::class);
+         $this->call(PermissionSeeder::class);
+         $this->call(RoleSeeder::class);
+
+
 
     }
 }

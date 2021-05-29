@@ -14,6 +14,15 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware(['can:listar usuarios'])->only('index');
+        $this->middleware(['can:crear usuarios'])->only('create,store');
+        $this->middleware(['can:editar usuarios'])->only('edit,update');
+        $this->middleware(['can:eliminar usuarios'])->only('destroy');
+    }
+
     public function index()
     {
      return view('admin.users.index');
