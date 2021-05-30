@@ -71,7 +71,10 @@
 
     <div>
         <p class="mb-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur corrupti odit nostrum </p>
-       {!! Form::file('file',['class'=>'form-input w-full','id'=>'file'])!!}
+       {!! Form::file('image',['class'=>'form-input w-full','id'=>'file','accept'=>'image/*'])!!}
+       @error('image')
+       <strong class="text-sm text-red-600">{{$message}}</strong>
+       @enderror
     </div>
 </div>
 

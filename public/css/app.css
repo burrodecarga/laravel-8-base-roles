@@ -33346,8 +33346,29 @@ select {
   margin-left: auto;
   margin-right: auto;
   max-width: 80rem;
-  padding-top: 6rem;
-  padding-bottom: 6rem
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem
+}
+
+.container80{
+  max-width: 64rem;
+  margin: auto;
+  background-color: white;
+  padding: 1.75rem;
+}
+
+.container60{
+  max-width: 32rem;
+  margin: auto;
+  background-color: white;
+  padding: 1.75rem;
+}
+
+.container40{
+  max-width: 24rem;
+  margin: auto;
+  background-color: white;
+  padding: 1.75rem;
 }
 
 @media(min-width:640){

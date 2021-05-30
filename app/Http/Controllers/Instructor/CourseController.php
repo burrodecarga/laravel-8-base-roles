@@ -30,12 +30,10 @@ class CourseController extends Controller
      */
     public function create()
     {
-        $categories = Category::pluck('name','id');
-        $levels = Level::pluck('name','id');
-        $prices = Price::pluck('name','id');
-        return view('instructor.courses.create',compact('categories','levels','prices'));
-
-
+        $categories = Category::pluck('name', 'id');
+        $levels = Level::pluck('name', 'id');
+        $prices = Price::pluck('name', 'id');
+        return view('instructor.courses.create', compact('categories', 'levels', 'prices'));
     }
 
     /**
@@ -46,26 +44,29 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request->hasFile(['image']));
         $request->validate([
-            'title' =>'required',
-            'slug' =>'required|unique:courses',
-            'subtitle' =>'required',
-            'description' =>'required',
-            'title' =>'required',
-            'category_id' =>'required',
-            'level_id' =>'required',
-            'price_id' =>'required',
+            'title' => 'required',
+            'slug' => 'required|unique:courses',
+            'subtitle' => 'required',
+            'description' => 'required',
+            'title' => 'required',
+            'category_id' => 'required',
+            'level_id' => 'required',
+            'price_id' => 'required',
+            'file'=>'image'
         ]);
 
 
         $course = Course::create($request->all());
-         if($request->file('file')){
-            $url = Storage::put('cursos',$request->file('file'));
+        if ($request->file('image')) {
+            $url = Storage::put('cursos', $request->file('image'));
+            //           dd($url,$request->all());
             $course->image()->create([
-                'url'=>$url
+                'url' => $url
             ]);
         }
-        return redirect()->route('instructor.courses.edit',$course);
+        return redirect()->route('instructor.courses.edit', $course);
     }
 
     /**
@@ -76,7 +77,7 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        return view('instructor.courses.show',compact('courses'));
+        return view('instructor.courses.show', compact('courses'));
     }
 
     /**
@@ -87,11 +88,11 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        $categories = Category::pluck('name','id');
-        $levels = Level::pluck('name','id');
-        $prices = Price::pluck('name','id');
+        $categories = Category::pluck('name', 'id');
+        $levels = Level::pluck('name', 'id');
+        $prices = Price::pluck('name', 'id');
 
-        return view('instructor.courses.edit',compact('course','categories','levels','prices'));
+        return view('instructor.courses.edit', compact('course', 'categories', 'levels', 'prices'));
     }
 
     /**
@@ -103,7 +104,32 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'slug' => 'required|unique:courses,slug,' . $course->id,
+            'subtitle' => 'required',
+            'description' => 'required',
+            'title' => 'required',
+            'category_id' => 'required',
+            'level_id' => 'required',
+            'price_id' => 'required',
+            'file'=>'image'
+        ]);
+        $course->update($request->all());
+
+        if ($request->file('image')) {
+            if ($course->image) {
+                Storage::delete($course->image->url);
+                $url = Storage::put('cursos', $request->file('image'));
+                $course->image()->update(['url' => $url]);
+            }else{
+                $url = Storage::put('cursos', $request->file('image'));
+                $course->image()->create(['url' => $url]);
+            }
+
+        }
+
+        return redirect()->route('instructor.courses.edit', $course);
     }
 
     /**
