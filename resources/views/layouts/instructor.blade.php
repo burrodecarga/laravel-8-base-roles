@@ -31,9 +31,9 @@
                     <aside class="shadow-sm border-2 mx-2 p-2 rounded">
                         <h1 class="font-bold text-lg mb-4">Acciones de Curso</h1>
                         <ul class="text-sm text-gray-600">
-                            <li class="leading-7 mb-1 border-l-4  pl-2 @routeIs('instructor.courses.edit',$course) border-indigo-500 @endif">
+                            <li class="leading-7 mb-1 border-l-4  pl-2 @routeIs('instructor.courses.edit',$course) border-indigo-500 @else border-transparent @endif">
                                 <a href="{{route('instructor.courses.edit',$course)}}">Información del curso</a> </li>
-                            <li class="leading-7 mb-1 border-l-4 border-transparent pl-2 @routeIs('instructor.courses.curriculum',$course) border-indigo-500 @endif">
+                            <li class="leading-7 mb-1 border-l-4 border-transparent pl-2 @routeIs('instructor.courses.curriculum',$course) border-indigo-500 @else border-transparent @endif">
                                 <a href="{{route('instructor.courses.curriculum',$course)}}">Lecciones del curso</a> </li>
                             <li class="leading-7 mb-1 border-l-4 border-transparent pl-2">
                                 <a href="">Metas del curso</a> </li>

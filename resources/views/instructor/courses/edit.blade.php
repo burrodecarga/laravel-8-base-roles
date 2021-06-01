@@ -3,8 +3,6 @@
            {{$course->slug}}
     </x-slot>
 
-    
-
         <div class="col-span-4 card bg-green-500 shadow-sm border-2 mx-2">
             <div class="card-body text-gray-600">
                 <h1 class="text-2xl font-bold">Información del curso</h1>
