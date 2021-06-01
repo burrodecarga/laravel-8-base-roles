@@ -52,10 +52,10 @@
                     <button class="text-sm btn btn-primary" wire:click="edit({{$item}})">editar</button></div>
             </div>
             <div class="mb-4">
-                @livewire('instructor.lesson-description',['lesson'=>$item],key($item->id))
+                @livewire('instructor.lesson-description',['lesson'=>$item],key('lesson-description'.$item->id))
             </div>
             <div>
-                @livewire('instructor.lesson-resource',['lesson'=>$item],key($item->id))
+                @livewire('instructor.lesson-resource',['lesson'=>$item],key('lesson-resource'.$item->id))
             </div>
 
             @endif

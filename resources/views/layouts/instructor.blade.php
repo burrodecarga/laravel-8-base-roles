@@ -35,10 +35,11 @@
                                 <a href="{{route('instructor.courses.edit',$course)}}">Información del curso</a> </li>
                             <li class="leading-7 mb-1 border-l-4 border-transparent pl-2 @routeIs('instructor.courses.curriculum',$course) border-indigo-500 @else border-transparent @endif">
                                 <a href="{{route('instructor.courses.curriculum',$course)}}">Lecciones del curso</a> </li>
-                            <li class="leading-7 mb-1 border-l-4 border-transparent pl-2">
-                                <a href="">Metas del curso</a> </li>
-                            <li class="leading-7 mb-1 border-l-4 border-transparent pl-2">
-                                <a href="">Estiudiantes del curso</a> </li>
+                            <li class="leading-7 mb-1 border-l-4 border-transparent pl-2  @routeIs('instructor.courses.goals',$course) border-indigo-500 @else border-transparent @endif">
+                                <a href="{{route('instructor.courses.goals',$course)}}">Metas del curso</a> </li>
+
+                                <li class="leading-7 mb-1 border-l-4 border-transparent pl-2  @routeIs('instructor.courses.students',$course) border-indigo-500 @else border-transparent @endif">
+                                    <a href="{{route('instructor.courses.students',$course)}}">Estudiantes del curso</a> </li>
                         </ul>
                     </aside>
                     <div class="col-span-4 card bg-green-500 shadow-sm border-2 mx-2">

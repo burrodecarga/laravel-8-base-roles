@@ -27,7 +27,7 @@
                 </div>
             </header>
             <div x-show="open">
-                @livewire('instructor.courses-lesson',['section'=>$item,'key'=>$item->id])
+                @livewire('instructor.courses-lesson',['section'=>$item,'key'=>'courses-lesson'.$item->id])
             </div>
             @endif
         </div>

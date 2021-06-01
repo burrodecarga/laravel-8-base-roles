@@ -68,7 +68,7 @@ class Course extends Model
 
     public function audiences()
     {
-        return $this->hasMany(Audiences::class);
+        return $this->hasMany(Audience::class);
     }
 
     public function sections()
