@@ -16,6 +16,8 @@ Route::get('courses', [CourseController::class,'index'])->middleware(['can:ver d
 
 Route::get('courses/{course}', [CourseController::class,'show'])->middleware(['can:ver dashboard'])->name('courses.show');
 
+Route::post('courses/{course}', [CourseController::class,'aproved'])->middleware(['can:ver dashboard'])->name('courses.aproved');
+
 
 
 

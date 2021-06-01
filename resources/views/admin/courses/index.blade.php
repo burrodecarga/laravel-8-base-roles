@@ -8,6 +8,11 @@
 @section('content')
 <article class="w-75 p-3 m-auto">
     <h2 class="text-gray-500 text-center font-bold">Cursos Pendientes de Aprobación</h2>
+    @if (session('info'))
+
+   <div class="alert alert-success">{{session('info')}}</div>
+
+    @endif
     <div class="card">
         <div class="card-body">
             <table class="table table-striped">

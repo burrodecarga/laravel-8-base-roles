@@ -1,5 +1,6 @@
 <x-app-layout>
     <section class="bg-gray-700 py-12 px-4">
+
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <figure>
                 @if ($course->image)
@@ -21,7 +22,17 @@
     </section>
 
 
+
     <div class="container grid grid-cols-1  lg:grid-cols-3 px-4">
+        @if (session('info'))<div class="lg:col-span-3" x-data="{open:true}" x-show="open">
+            <div class="w-50 relative py-3 pl-4 pr-10 leading-normal text-red-700 bg-red-100 rounded-lg" role="alert">
+                <p>{{session('info')}}</p>
+                <span class="absolute inset-y-0 right-0 flex items-center mr-4" x-on:click="open =!open">
+                  <svg class="w-4 h-4 fill-current" role="button" viewBox="0 0 20 20"><path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" fill-rule="evenodd"></path></svg>
+                </span>
+              </div></div>
+            @endif
+
         <div class="order-2 lg:order-1 lg:col-span-2">
             <div class="card">
                 <div class="card-body bg-white">
@@ -97,18 +108,14 @@
                         </div>
                     </div>
 
-                   <div>Respuesta: {{$course->students->contains(auth()->user()->id)}}</div>
 
-                    @can('isEnrolled', $course)
-                        <form action="{{route('courses.enrolled',$course)}}" method="POST">
+                        <form action="{{route('admin.courses.show',$course)}}" method="POST">
                             @csrf
-                            <button type="submit" class="btn-success w-full">
-                                {{__('Buy Course')}}
+                            <button type="submit" class="btn-danger w-full">
+                                {{__('Aporbar Curso')}}
                             </button>
                         </form>
-                    @else
-                        <a class="btn-danger mt-4" href="{{route('courses.status',$course)}}">Ir a Curso</a>
-                    @endcan
+
 
                 </div>
             </section>
