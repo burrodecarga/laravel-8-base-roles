@@ -77,5 +77,6 @@ class CoursesLesson extends Component
     public function destroy(Lesson $lesson){
         $lesson->delete();
         $this->section = Section::find($this->section->id);
+        $this->render();
     }
 }

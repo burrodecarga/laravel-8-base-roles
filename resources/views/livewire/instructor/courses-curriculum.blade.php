@@ -7,7 +7,7 @@
     {{-- {{$section}} --}}
     @foreach ($course->sections as $item )
     <article class="card mb-6">
-        <div class="card-body bg-gray-100">
+        <div class="card-body bg-gray-100" x-data="{open:true}">
             @if ($item->id == $section->id)
             <form wire:submit.prevent="update">
                 <input type="text" placeholder="Ingrese nombre de sección" class="form-input w-full rounded"
@@ -15,23 +15,20 @@
                 @error('section.name')
                 <span class="text-xs text-red-500">{{$message}}</span>
                 @enderror
-
             </form>
-
             @else
-            <header class="flex items-center justify-between">
-                <h1 class="cursor-pointer">
-                    <strong> sección :</strong> {{$item->name}}</h1>
+            <header class="flex items-center justify-between" >
+                <h1 class="cursor-pointer" >
+                    <strong> sección :</strong>{{$item->name}}</h1>
+                    <i class="far fa-hand-pointer text-green-600 ml-2 cursor-pointer"x-on:click="open =!open"></i>
                 <div>
-
                     <i class="fas fa-edit  cursor-pointer text-blue-500 mr-3" wire:click="edit({{$item}})"></i>
                     <i class="fas fa-trash cursor-pointer text-red-500" wire:click="delete({{$item->id}})"></i>
                 </div>
             </header>
-            <div>
+            <div x-show="open">
                 @livewire('instructor.courses-lesson',['section'=>$item,'key'=>$item->id])
             </div>
-
             @endif
         </div>
     </article>
