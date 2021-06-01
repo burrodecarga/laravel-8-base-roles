@@ -38,38 +38,38 @@ class UserSeeder extends Seeder
             $student->syncPermissions(Permission::where('name','like',"%student%"));
             $guest->syncPermissions(Permission::where('name','like',"%guest%"));
 
-        //     $candidate =User::create([
-        //         'name' => 'Candidate Henriquez',
-        //         'email' => 'candidate@gmail.com',
-        //         'email_verified_at' => now(),
-        //         'password' => bcrypt('123'),
-        //         'remember_token' => Str::random(10)]);
+             $profe =User::create([
+                 'name' => 'Profe Henriquez',
+                 'email' => 'profe@gmail.com',
+                 'email_verified_at' => now(),
+                 'password' => bcrypt('123'),
+                 'remember_token' => Str::random(10)]);
 
-        // for($i=1; $i<11; $i++)
-        // {
-        // $candidate =User::create([
-        //     'name' => 'Candidate Number-'.$i,
-        //     'email' => 'candidate'.$i.'@gmail.com',
-        //     'email_verified_at' => now(),
-        //     'password' => bcrypt('123'),
-        //     'remember_token' => Str::random(10)]);
-        // }
+         for($i=1; $i<11; $i++)
+         {
+         $profe =User::create([
+             'name' => 'profe Number-'.$i,
+             'email' => 'profe'.$i.'@gmail.com',
+             'email_verified_at' => now(),
+             'password' => bcrypt('123'),
+             'remember_token' => Str::random(10)]);
+         }
 
-        // for($i=1; $i<11; $i++)
-        // {
-        // $employer =User::create([
-        //         'name' => 'Employer Number :-'.$i,
-        //         'email' => 'employer'.$i.'@gmail.com',
-        //         'email_verified_at' => now(),
-        //         'password' => bcrypt('123'),
-        //         'remember_token' => Str::random(10)]);}
+         for($i=1; $i<11; $i++)
+         {
+         $estudiante =User::create([
+                 'name' => 'estudiante Number :-'.$i,
+                 'email' => 'estudiante'.$i.'@gmail.com',
+                 'email_verified_at' => now(),
+                 'password' => bcrypt('123'),
+                 'remember_token' => Str::random(10)]);}
 
-        //         $employer =User::create([
-        //             'name' => 'Employer Henriquez',
-        //             'email' => 'employer@gmail.com',
-        //             'email_verified_at' => now(),
-        //             'password' => bcrypt('123'),
-        //             'remember_token' => Str::random(10)]);
+                 $estudiante =User::create([
+                     'name' => 'estudiante Henriquez',
+                     'email' => 'estudiante@gmail.com',
+                     'email_verified_at' => now(),
+                     'password' => bcrypt('123'),
+                     'remember_token' => Str::random(10)]);
 
         // $guest =User::create([
         //             'name' => 'Guest Henriquez',

@@ -22,25 +22,19 @@ class CoursePolicy
 
     public function isEnrolled(User $user,Course $course)
     {
-        if($course->students->contains($user->id)==false) { return true;}else{return false;}
+        return ($course->students->contains($user->id))?true:$this->notAuthorized();
     }
 
     public function published(?User $user,Course $course){
-        if($course->status==3){
-            return true;
-        }else{
-            return false;
-        }    }
+        return ($course->status==3)? true:$this->notAuthorized();}
+
 
         public function dictated(User $user,Course $course){
-            if($course->user_id == $user->id){
-                return true;
-            }else{
-                return false;
-            }
+
+            return ($course->user_id == $user->id)? true:$this->notAuthorized();
         }
 
         public function revision(User $user, Course $course){
-            if($course->status==2){return true;}else{return false;}
+            return ($course->status==2)? false:$this->notAuthorized();
         }
 }

@@ -33,6 +33,7 @@ class RoleSeeder extends Seeder
             'leer curso',
             'actualizar curso',
             'eliminar curso',
+            'ver dashboard',
         ]);
     }
 }

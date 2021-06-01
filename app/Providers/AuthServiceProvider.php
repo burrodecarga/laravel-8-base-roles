@@ -20,8 +20,6 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         Team::class => TeamPolicy::class,
         Course::class => CoursePolicy::class,
-
-
     ];
 
     /**

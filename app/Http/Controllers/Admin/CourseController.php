@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Auth\Access\Response;
 
 class CourseController extends Controller
 {
@@ -15,14 +16,15 @@ class CourseController extends Controller
 
     public function show(Course $course){
 
-        $this->authorize('revision',$course);
+        //return $course->status;
+        return $this->authorize("revision",$course);
 
         return view('admin.courses.show',compact('course'));
     }
 
     public function aproved(Course $course){
 
-        $this->authorize('revision',$course);
+       $this->authorize('revision');
 
         if(!$course->lessons || !$course->goals || !$course->requirements || !$course->image){
             return back()->with('info','Curso incompleto, no se puede publicar');
