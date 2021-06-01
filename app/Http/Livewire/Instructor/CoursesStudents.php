@@ -29,6 +29,6 @@ class CoursesStudents extends Component
         $students = $this->course->students()->where('name','like','%'.$this->search.'%')
         ->orWhere('email','like','%'.$this->search.'%')
         ->paginate(4);
-        return view('livewire.instructor.courses-students',compact('students'))->layout('layouts.instructor');
+        return view('livewire.instructor.courses-students',compact('students'))->layout('layouts.instructor',['course'=>$this->course]);
     }
 }

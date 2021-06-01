@@ -41,6 +41,35 @@
                                 <li class="leading-7 mb-1 border-l-4 border-transparent pl-2  @routeIs('instructor.courses.students',$course) border-indigo-500 @else border-transparent @endif">
                                     <a href="{{route('instructor.courses.students',$course)}}">Estudiantes del curso</a> </li>
                         </ul>
+
+
+                        @switch($course->status)
+                            @case(1)
+                            <form action="{{route('instructor.courses.status',$course)}}" method="POST">
+                                @csrf
+                                @method('post')
+                                <button type="submit" class="btn-danger">Solicitar Revisión</button>
+                            </form>
+                                @break
+                            @case(2)
+                            <div class="card ">
+                                <div class="card-body bg-yellow-500">
+                                     <h2 class="text-sm text-white">Curso en revisión</h2>
+                                </div>
+                            </div>
+
+                                @break
+                                @case(3)
+                                <div class="card ">
+                                    <div class="card-body bg-green-500 ">
+                                         <h2 class="text-sm text-white">Curso está publicado</h2>
+                                    </div>
+                                </div>
+                                    @break
+                            @default
+
+                        @endswitch
+
                     </aside>
                     <div class="col-span-4 card bg-green-500 shadow-sm border-2 mx-2">
                         <div class="card-body text-gray-600">

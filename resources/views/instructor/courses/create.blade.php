@@ -1,5 +1,5 @@
-<x-instructor-layout>
-    <div class="container80 py-8">
+<x-app-layout>
+    <div class="container60 py-8">
         <div class="card">
             <div class="card-body">
                 <h1 class="font-bold text-2xl">Crear nuevo Curso</h1>
@@ -24,4 +24,4 @@
     </x-slot>
 
 
-</x-instructor-layout>
+</x-app-layout>

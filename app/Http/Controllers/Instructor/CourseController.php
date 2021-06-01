@@ -38,6 +38,7 @@ class CourseController extends Controller
      */
     public function create()
     {
+
         $categories = Category::pluck('name', 'id');
         $levels = Level::pluck('name', 'id');
         $prices = Price::pluck('name', 'id');
@@ -157,5 +158,11 @@ class CourseController extends Controller
 
     public function goals(Course $course){
         return view('instructor.courses.goals',compact('course'));
+    }
+
+    public function status(Course $course){
+        $course->status = 2;
+        $course->save();
+        return back();
     }
 }

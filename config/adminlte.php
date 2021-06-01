@@ -85,7 +85,7 @@ return [
 
     'layout_topnav' => null,
     'layout_boxed' => null,
-    'layout_fixed_sidebar' => null,
+    'layout_fixed_sidebar' => true,
     'layout_fixed_navbar' => null,
     'layout_fixed_footer' => null,
     'layout_dark_mode' => null,
@@ -266,11 +266,11 @@ return [
             'active' =>['admin/users*'],
             'can' =>'leer usuarios',
         ],
-        ['header' => 'account_settings'],
+        ['header' => 'Opciones de Curso'],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'text' => 'Revisión',
+            'url'  => 'admin/courses',
+            'icon' => 'fas fa-clipboard-check',
         ],
         [
             'text' => 'change_password',
