@@ -16,7 +16,14 @@ Route::get('courses', [CourseController::class,'index'])->middleware([])->name('
 
 Route::get('courses/{course}', [CourseController::class,'show'])->middleware([])->name('courses.show');
 
-Route::post('courses/{course}', [CourseController::class,'aproved'])->middleware([])->name('courses.aproved');
+Route::post('courses/{course}/aproved', [CourseController::class,'aproved'])->middleware([])->name('courses.aproved');
+
+Route::get('courses/{course}/obsevation', [CourseController::class,'observation'])->middleware([])->name('courses.observation');
+
+
+Route::post('courses/{course}/reject', [CourseController::class,'reject'])->middleware([])->name('courses.reject');
+
+
 
 
 

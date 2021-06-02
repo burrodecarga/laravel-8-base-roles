@@ -77,12 +77,13 @@
                          @break
                      @case(3)
                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">   Active</span>
-
                          @break
                      @default
 
                  @endswitch
-                     <h1>{{$course->status}}</h1>
+                   @if ($course?->observation)
+                   <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-600 text-white">   Observaciones</span>
+                   @endif
                 </td>
 
                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">

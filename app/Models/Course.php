@@ -104,4 +104,8 @@ class Course extends Model
             return $query->where('level_id', $level_id);
         }
     }
+
+    public function observation(){ 
+        return $this->hasOne(Observation::class);
+    }
 }

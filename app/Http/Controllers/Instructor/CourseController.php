@@ -165,4 +165,9 @@ class CourseController extends Controller
         $course->save();
         return back();
     }
+
+    public function observation(Course $course){
+        //return $course;
+        return view('instructor.courses.observation', compact('course'));
+    }
 }

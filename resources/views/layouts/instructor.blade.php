@@ -29,7 +29,8 @@
 
                 <main class="container py-8 grid grid-cols-5">
                     <aside class="shadow-sm border-2 mx-2 p-2 rounded">
-                        <h1 class="font-bold text-lg mb-4">Acciones de Curso</h1>
+                        <h1 class="font-bold text-lg mb-4 text-center">Acciones de Curso</h1>
+                        <hr class="mb-3">
                         <ul class="text-sm text-gray-600">
                             <li class="leading-7 mb-1 border-l-4  pl-2 @routeIs('instructor.courses.edit',$course) border-indigo-500 @else border-transparent @endif">
                                 <a href="{{route('instructor.courses.edit',$course)}}">Información del curso</a> </li>
@@ -40,21 +41,29 @@
 
                                 <li class="leading-7 mb-1 border-l-4 border-transparent pl-2  @routeIs('instructor.courses.students',$course) border-indigo-500 @else border-transparent @endif">
                                     <a href="{{route('instructor.courses.students',$course)}}">Estudiantes del curso</a> </li>
-                        </ul>
 
+                                    @if($course->observation)
+                                    <li class="leading-7 mb-1 border-l-4 border-transparent pl-2  @routeIs('instructor.courses.observation',$course) border-indigo-500 @else border-transparent @endif">
+                                         <a href="{{route('instructor.courses.observation',$course)}}">Observaciones</a></li>
+                                    @endif
+
+                        </ul>
+<hr class="mb-2">
+                        <a  class="text-center inline-block w-full text-white bg-blue-500 py-2 px-3 rounded my-3"  href="{{route('instructor.courses.index')}}">Cursos</a>
+                        <hr class="my-2">
 
                         @switch($course->status)
                             @case(1)
                             <form action="{{route('instructor.courses.status',$course)}}" method="POST">
                                 @csrf
                                 @method('post')
-                                <button type="submit" class="btn-danger">Solicitar Revisión</button>
+                                <button type="submit" class="btn-danger inline-block w-full ">Solicitar Revisión</button>
                             </form>
                                 @break
                             @case(2)
                             <div class="card ">
                                 <div class="card-body bg-yellow-500">
-                                     <h2 class="text-sm text-white">Curso en revisión</h2>
+                                     <h2 class="text-sm text-white text-center">Curso en revisión</h2>
                                 </div>
                             </div>
 
@@ -62,12 +71,10 @@
                                 @case(3)
                                 <div class="card ">
                                     <div class="card-body bg-green-500 ">
-                                         <h2 class="text-sm text-white">Curso está publicado</h2>
+                                         <h2 class="text-sm text-white text-center">Curso Publicado</h2>
                                     </div>
                                 </div>
                                     @break
-                            @default
-
                         @endswitch
 
                     </aside>

@@ -111,10 +111,12 @@
 
                         <form action="{{route('admin.courses.show',$course)}}" method="POST">
                             @csrf
-                            <button type="submit" class="btn-danger w-full">
+                            <button type="submit" class="btn-primary w-full">
                                 {{__('Aporbar Curso')}}
                             </button>
                         </form>
+
+                        <a href="{{route('admin.courses.observation',$course)}}" class="btn btn-danger block mt-2 text-center">Observaciones</a>
 
 
                 </div>
