@@ -110,18 +110,18 @@
                                 {{ __('Profile') }}
                             </x-jet-dropdown-link>
 
-                            @can('teacher show')
+
                             <x-jet-dropdown-link href="{{ route('instructor.courses.index') }}">
-                                {{ __('Teacher') }}
+                                {{ __('Instructor') }}
                             </x-jet-dropdown-link>
-                            @endcan
+
 
                             {{-- <x-jet-dropdown-link href="{{ route('admin.roles.index') }}">
                                 {{ __('Admin') }}
                             </x-jet-dropdown-link> --}}
 
                             <x-jet-dropdown-link href="{{ route('admin.home') }}">
-                                {{ __('Admin Home') }}
+                                {{ __('Administrador') }}
                             </x-jet-dropdown-link>
 
 

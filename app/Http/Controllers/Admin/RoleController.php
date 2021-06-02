@@ -17,10 +17,10 @@ class RoleController extends Controller
 
      public function __construct()
      {
-         $this->middleware(['can:listar roles'])->only('index');
-         $this->middleware(['can:crear roles'])->only('create,store');
-         $this->middleware(['can:editar roles'])->only('edit,update');
-         $this->middleware(['can:eliminar roles'])->only('destroy');
+        //  $this->middleware(['can:listar roles'])->only('index');
+        //  $this->middleware(['can:crear roles'])->only('create,store');
+        //  $this->middleware(['can:editar roles'])->only('edit,update');
+        //  $this->middleware(['can:eliminar roles'])->only('destroy');
      }
 
     public function index()

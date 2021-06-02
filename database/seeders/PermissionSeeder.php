@@ -24,14 +24,5 @@ class PermissionSeeder extends Seeder
       Permission::create([ 'name' =>'eliminar role'    ]);
       Permission::create([ 'name' =>'leer usuarios'    ]);
       Permission::create([ 'name' =>'editar usuario'   ]);
-
-
-
-
-
-
-
-
-
     }
 }

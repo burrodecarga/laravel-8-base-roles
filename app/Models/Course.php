@@ -14,8 +14,8 @@ class Course extends Model
     protected $withCount = ['students', 'reviews'];
 
 
-    const BORRADOR = 1;
-    const REVISION = 2;
+    const BORRADOR  = 1;
+    const REVISION  = 2;
     const PUBLICADO = 3;
 
 

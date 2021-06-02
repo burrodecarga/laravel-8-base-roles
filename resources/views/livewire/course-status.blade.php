@@ -35,22 +35,21 @@
             </div>
 
             <div>
-                <p>{{$current->name}}</p>
-                <p>indice: {{$this->index}}</p>
+                {{-- <p>{{$current->name}}</p> --}}
+                {{-- <p>indice: {{$this->index}}</p> --}}
                 <p>
                     @if ($this->previous)
-                    <p>previous: {{$this->previous->id}}</p>
+                    {{-- <p>previous: {{$this->previous->id}}</p> --}}
                     @endif
                     @if ($this->next->id)
-                    <p>next : {{$this->next->id}}</p>
+                    {{-- <p>next : {{$this->next->id}}</p> --}}
                     @endif
-
             </div>
 
         </div>
         <div class="card">
             <div class="card-body">
-                <h1>
+                <h1 class="text-gray-500 text-lg mb-3">
                     {{$course->title}}
                 </h1>
                 <div class="flex item-center">
@@ -58,8 +57,8 @@
                         <img class="rounded-full w-12 h-12" src="{{$course->teacher->profile_photo_url}}"
                             alt="{{$course->teacher->name}}">
                     </figure>
-                    <div>
-                        <p class="">{{$course->teacher->name}}</p>
+                    <div class="ml-3">
+                        <p class="">Prof: {{$course->teacher->name}}</p>
                         <p class="text-xs text-blue-500">{{'@'.Str::slug($course->teacher->name,'')}}</p>
                     </div>
 
@@ -102,7 +101,7 @@
                                         @endif
                                     @endif
 
-                                    {{$lesson->id}}
+                                    {{$lesson->name}}
                                 </a>
                                 </div>
 

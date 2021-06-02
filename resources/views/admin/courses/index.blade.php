@@ -27,7 +27,7 @@
                 <tbody>
                     @foreach ($courses as $course )
                         <tr>
-                        <td>{{$course->id}}</td>
+                        <td>{{$course->id.' - '.$course->status}}</td>
                         <td>{{$course->title}}</td>
                         <td>{{$course->category->name}}</td>
                         <td>

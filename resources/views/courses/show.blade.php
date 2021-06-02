@@ -77,18 +77,17 @@
         <div class="cols-span-1 order-1 lg:order-2">
             <section class="card">
                 <div class="card-body">
-                    <div class="flex mb-3 items-center">
+                    <div class="flex mb-8 items-center">
                         <img class="rounded-full shadow-lg h-12 w-12" src="{{$course->teacher->profile_photo_url}}"
                             alt="{{$course->teacher->name}}">
                         <div class="ml-4 flex items-center flex-col">
-                            <h2 class="font-bold  text-gray-600 text-lg">{{$course->teacher->name}}</h2>
-
+                            <h2 class="font-bold  text-gray-600 text-lg">
+                                Prof: {{$course->teacher->name}}</h2>
                         </div>
                     </div>
 
-                   <div>Respuesta: {{$course->students->contains(auth()->user()->id)}}</div>
 
-                    @can('isEnrolled', $course)
+                    @canNot('isEnrolled', $course)
                         <form action="{{route('courses.enrolled',$course)}}" method="POST">
                             @csrf
                             <button type="submit" class="btn-success w-full">
@@ -96,8 +95,9 @@
                             </button>
                         </form>
                     @else
-                        <a class="btn-danger mt-4" href="{{route('courses.status',$course)}}">Ir a Curso</a>
-                    @endcan
+
+                        <a class="btn btn-danger mt-4 w-full inline-block text-center" href="{{route('courses.status',$course)}}">Ir a Curso</a>
+                    @endcannot
 
                 </div>
             </section>

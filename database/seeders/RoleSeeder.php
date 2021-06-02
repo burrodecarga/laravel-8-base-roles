@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class RoleSeeder extends Seeder
@@ -14,8 +15,8 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        $gerente = Role::create(['name' => 'gerente']);
-        $gerente->syncPermissions([
+        $admin = Role::create(['name' => 'admin']);
+        $admin->syncPermissions([
             'crear curso',
             'leer curso',
             'actualizar curso',
@@ -27,6 +28,7 @@ class RoleSeeder extends Seeder
             'leer usuarios',
             'editar usuario',
         ]);
+
         $instructor = Role::create(['name' => 'instructor']);
         $instructor->syncPermissions([
             'crear curso',
@@ -35,5 +37,11 @@ class RoleSeeder extends Seeder
             'eliminar curso',
             'ver dashboard',
         ]);
+
+        $estudiante = Role::create(['name' => 'estudiante']);
+
+        $role = Role::create(['name' => 'super-admin']);
+        $role->givePermissionTo(Permission::all());
+
     }
 }

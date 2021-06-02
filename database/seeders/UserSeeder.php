@@ -18,34 +18,38 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $admin = Role::create(['name' =>'admin']);
-        $teacher = Role::create(['name' =>'teacher']);
-        $student = Role::create(['name' =>'student']);
-        $guest = Role::create(['name' =>'guest']);
+        // $admin = Role::create(['name' =>'admin']);
+        // $teacher = Role::create(['name' =>'teacher']);
+        // $student = Role::create(['name' =>'student']);
+        // $guest = Role::create(['name' =>'guest']);
 
 
 
 
-        $permissions = ['show','create','edit','update','delete'];
+        // $permissions = ['show','create','edit','update','delete'];
 
-        foreach (Role::all() as $role){
-            foreach($permissions as $p){
-                Permission::create(['name'=>"{$role->name} $p"]);
-            }}
+        // foreach (Role::all() as $role){
+        //     foreach($permissions as $p){
+        //         Permission::create(['name'=>"{$role->name} $p"]);
+        //     }}
 
-            $admin->syncPermissions(Permission::all());
-            $teacher->syncPermissions(Permission::where('name','like',"%teacher%"));
-            $student->syncPermissions(Permission::where('name','like',"%student%"));
-            $guest->syncPermissions(Permission::where('name','like',"%guest%"));
+        //     $admin->syncPermissions(Permission::all());
+        //     $teacher->syncPermissions(Permission::where('name','like',"%teacher%"));
+        //     $student->syncPermissions(Permission::where('name','like',"%student%"));
+        //     $guest->syncPermissions(Permission::where('name','like',"%guest%"));
 
-             $profe =User::create([
-                 'name' => 'Profe Henriquez',
-                 'email' => 'profe@gmail.com',
-                 'email_verified_at' => now(),
-                 'password' => bcrypt('123'),
-                 'remember_token' => Str::random(10)]);
+        //     $instructor = Role::create(['name' => 'instructor']);
 
-         for($i=1; $i<11; $i++)
+
+            //  $profe =User::create([
+            //      'name' => 'Profe Henriquez',
+            //      'email' => 'profe@gmail.com',
+            //      'email_verified_at' => now(),
+            //      'password' => bcrypt('123'),
+            //      'remember_token' => Str::random(10)]);
+            //      $profe->assignRole('instructor');
+
+    for($i=1; $i<11; $i++)
          {
          $profe =User::create([
              'name' => 'profe Number-'.$i,
@@ -53,6 +57,7 @@ class UserSeeder extends Seeder
              'email_verified_at' => now(),
              'password' => bcrypt('123'),
              'remember_token' => Str::random(10)]);
+             $profe->assignRole('instructor');
          }
 
          for($i=1; $i<11; $i++)
@@ -62,7 +67,9 @@ class UserSeeder extends Seeder
                  'email' => 'estudiante'.$i.'@gmail.com',
                  'email_verified_at' => now(),
                  'password' => bcrypt('123'),
-                 'remember_token' => Str::random(10)]);}
+                 'remember_token' => Str::random(10)]);
+                 $estudiante->assignRole('estudiante');
+                }
 
                  $estudiante =User::create([
                      'name' => 'estudiante Henriquez',
@@ -70,25 +77,23 @@ class UserSeeder extends Seeder
                      'email_verified_at' => now(),
                      'password' => bcrypt('123'),
                      'remember_token' => Str::random(10)]);
-
-        // $guest =User::create([
-        //             'name' => 'Guest Henriquez',
-        //             'email' => 'guest@gmail.com',
-        //             'email_verified_at' => now(),
-        //             'password' => bcrypt('123'),
-        //             'remember_token' => Str::random(10)]);
-
-        //  $admin =User::create([
-        //                 'name' => 'Admin Henriquez',
-        //                 'email' => 'admin@gmail.com',
-        //                 'email_verified_at' => now(),
-        //                 'password' => bcrypt('123'),
-        //                 'remember_token' => Str::random(10)]);
+                     $estudiante->assignRole('estudiante');
 
 
+         $guest =User::create([
+                     'name' => 'Guest Henriquez',
+                     'email' => 'guest@gmail.com',
+                     'email_verified_at' => now(),
+                     'password' => bcrypt('123'),
+                     'remember_token' => Str::random(10)]);
 
-        $role = Role::create(['name' => 'super-admin']);
-        $role->givePermissionTo(Permission::all());
+          $admin =User::create([
+                         'name' => 'Admin Henriquez',
+                         'email' => 'admin@gmail.com',
+                         'email_verified_at' => now(),
+                         'password' => bcrypt('123'),
+                         'remember_token' => Str::random(10)]);
+
 
         $user =User::create([
             'name' => 'Edwin Henriquez',

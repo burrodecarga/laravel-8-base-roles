@@ -15,10 +15,10 @@ class CourseController extends Controller
 
     public function __construct()
     {
-        $this->middleware(['can:leer cursos'])->only('index');
-        $this->middleware(['can:crear cursos'])->only('create,store');
-        $this->middleware(['can:actualizar cursos'])->only('edit,update,goals');
-        $this->middleware(['can:eliminar cursos'])->only('destroy');
+        // $this->middleware(['can:leer cursos'])->only('index');
+        // $this->middleware(['can:crear cursos'])->only('create,store');
+        // $this->middleware(['can:actualizar cursos'])->only('edit,update,goals');
+        // $this->middleware(['can:eliminar cursos'])->only('destroy');
     }
     /**
      * Display a listing of the resource.

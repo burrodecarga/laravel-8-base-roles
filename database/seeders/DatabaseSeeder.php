@@ -20,18 +20,21 @@ class DatabaseSeeder extends Seeder
         Storage::deleteDirectory('cursos');
         Storage::makeDirectory('cursos');
 
+        
+        $this->call(PermissionSeeder::class);
+        $this->call(RoleSeeder::class);
 
         $this->call(UserSeeder::class);
         $this->call(LevelSeeder::class);
         $this->call(PriceSeeder::class);
         $this->call(CategorySeeder::class);
+
         \App\Models\User::factory(10)->create();
 
         $this->call(PlatFormSeeder::class);
          $this->call(CourseSeeder::class);
          $this->call(ReviewSeeder::class);
-         $this->call(PermissionSeeder::class);
-         $this->call(RoleSeeder::class);
+
 
 
 

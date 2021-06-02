@@ -11,6 +11,12 @@ use Livewire\WithPagination;
 class CoursesIndex extends Component
 {
     use WithPagination;
+
+    public function paginationView()
+    {
+        return 'pagination-links';
+    }
+
     public $category_id=1;
     public $level_id =2;
 
@@ -21,9 +27,7 @@ class CoursesIndex extends Component
         $courses = Course::where('status',3)
                           ->category($this->category_id)
                           ->level($this->level_id)
-                          ->latest('id')->paginate(12);
-
-
+                          ->latest('id')->paginate(4);
         return view('livewire.courses-index',[
             'courses' =>$courses,
             'categories' =>$categories,
