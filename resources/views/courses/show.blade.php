@@ -72,6 +72,7 @@
                         <p>{{$course->description}}</p>
                     </div>
                 </section>
+                @livewire('courses-review',['course'=>$course])
             </div>
         </div>
         <div class="cols-span-1 order-1 lg:order-2">

@@ -269,8 +269,23 @@ return [
         ['header' => 'Opciones de Curso'],
         [
             'text' => 'Revisión',
-            'url'  => 'admin/courses',
+            'route'  => 'admin.courses',
             'icon' => 'fas fa-clipboard-check',
+        ],
+        [
+            'text' => 'Categorias',
+            'route'  => 'admin.categories.index',
+            'icon' => 'fas fa-chart-pie',
+        ],
+        [
+            'text' => 'Niveles',
+            'route'  => 'admin.levels.index',
+            'icon' => 'fas fa-chart-line',
+        ],
+        [
+            'text' => 'Precios',
+            'route'  => 'admin.prices.index',
+            'icon' => 'fas fa-credit-card',
         ],
         [
             'text' => 'change_password',
