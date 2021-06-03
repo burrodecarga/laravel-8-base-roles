@@ -53,7 +53,7 @@ class Course extends Model
 
     public function price()
     {
-        return $this->hasOne(Price::class);
+        return $this->belongsTo(Price::class);
     }
 
     public function requirements()
@@ -105,7 +105,7 @@ class Course extends Model
         }
     }
 
-    public function observation(){ 
+    public function observation(){
         return $this->hasOne(Observation::class);
     }
 }

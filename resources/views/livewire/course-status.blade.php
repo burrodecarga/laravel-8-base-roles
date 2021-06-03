@@ -12,16 +12,23 @@
                 {{$current->description->name}}
             </div>
             @endif
-
-            <div class="flex item-center mt-4 cursor-pointer" wire:click="completed">
+        <div class="flex justify-between items-center ">
+            <div class="flex  cursor-pointer items-center" wire:click="completed">
                 @if ($current->completed)
                 <i class="fas fa-toggle-on text-2xl text-blue-600"></i>
                 @else
                 <i class="fas fa-toggle-off text-2xl text-gray-600"></i>
                 <p class="ml-2 text-sm">Marcar culminada</p>
                 @endif
-
             </div>
+            @if ($current->resource)
+                <div class="flex cursor-pointer items-center " wire:click="download">
+                <i class="fas fa-download text-2xl text-gray-600"></i>
+                <p class="ml-2 text-sm">Descargar Recursos</p>
+            </div>
+            @endif
+
+        </div>
             <div class="card mt-2">
                 <div class="card-body flex text-gray-500 font-bold">
                     @if ($this->previous)

@@ -96,9 +96,10 @@
                             </button>
                         </form>
                     @else
-
                         <a class="btn btn-danger mt-4 w-full inline-block text-center" href="{{route('courses.status',$course)}}">Ir a Curso</a>
                     @endcannot
+
+                    <a class="btn btn-danger mt-4 w-full inline-block text-center" href="{{route('payment.checkout',$course)}}">Checkout</a>
 
                 </div>
             </section>

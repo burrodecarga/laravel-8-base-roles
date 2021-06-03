@@ -1,8 +1,8 @@
 @props(['course'])
-<article class="bg-white shadow-sm rounded-lg overflow-hidden">
+<article class="bg-white shadow-sm rounded-lg overflow-hidden flex flex-col">
     <figure>
         <img class="w-full object-cover" src="{{Storage::url($course->image->url)}}" alt="{{$course->title}}">
-        <div class="px-6 py-4">
+        <div class="px-6 py-4 flex-1">
             <h2 class="text-center text-gray-700 text-lg mb-2 leading-6">
                 {{Str::limit($course->title,40)}}
             </h2>
@@ -24,6 +24,14 @@
                 register : {{$course->students_count}}
             </p>
         </div>
+        <p class="text-gray-500 my-2 font-bold text-center">
+            @if ($course->price->value)
+              Price: ${{$course->price->value}}
+            @else
+            Gratis
+            @endif
+
+        </p>
         <a class="w-full block rounded-lg py-3 px6 bg-blue-600 text-center text-white hoover:bg-blue-400"
             href="{{route('courses.show',$course)}}">See more...</a>
     </figure>
