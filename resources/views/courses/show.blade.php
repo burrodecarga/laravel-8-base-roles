@@ -2,7 +2,7 @@
     <section class="bg-gray-700 py-12 px-4">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <figure>
-                <img class="h-60 w-full object-cover " src="{{Storage::url($course->image->url)}}"
+                <img class="h-60 w-full object-cover " src="{{asset('storage/'.$course->image->url)}}"
                     alt="{{$course->title}}">
             </figure>
             <div class="text-white">
@@ -107,7 +107,7 @@
             <aside class="hidden lg:block">
                 @foreach ($similar as $s )
                 <article class="flex mb-4">
-                    <img class="h-32 w-40 object-cover" src="{{Storage::url($s->image->url)}}"
+                    <img class="h-32 w-40 object-cover" src="{{asset('storage/'.$s->image->url)}}"
                         alt="{{$s->teacher->name}}">
                     <div class="ml-3">
                         <a href="{{route('courses.show',$s)}}">

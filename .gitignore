@@ -13,6 +13,7 @@ npm-debug.log
 yarn-error.log
 _cacache
 _locks
+_logs
 /trash
 /public/img
 /storage

@@ -1,7 +1,7 @@
 @props(['course'])
 <article class="bg-white shadow-sm rounded-lg overflow-hidden flex flex-col">
     <figure>
-        <img class="w-full object-cover" src="{{Storage::url($course->image->url)}}" alt="{{$course->title}}">
+        <img class="w-full object-cover" src="{{asset('storage/'.$course->image->url)}}" alt="{{$course->title}}">
         <div class="px-6 py-4 flex-1">
             <h2 class="text-center text-gray-700 text-lg mb-2 leading-6">
                 {{Str::limit($course->title,40)}}
